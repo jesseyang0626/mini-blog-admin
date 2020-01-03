@@ -14,7 +14,11 @@ export default class List extends React.Component {
         super(props)
         this.state = {
             mdContent:'',
-            htmlContent:''
+            htmlContent:'',
+            title:'',
+            author:'Jesse Yang',
+
+
         }
         this.mdParser = new MarkdownIt()
         this.handleEditorChange = this.handleEditorChange.bind(this)
@@ -24,11 +28,11 @@ export default class List extends React.Component {
         this.setState({htmlContent:html,mdContent:text})
     }
     saveArticle=()=>{
-        const {assessToken} = this.props
-        const {htmlContent,mdContent} = this.state
+        const {assessToken,changeTab} = this.props
+        const {htmlContent,mdContent,title,author} = this.state
         let params = {
-            title:'111',
-            author:'222',
+            title,
+            author,
             mdContent,
             htmlContent
         }
@@ -38,6 +42,7 @@ export default class List extends React.Component {
             if(res.errcode == 0){
                 const funcRs= JSON.parse(res.resp_data)
                console.log(funcRs)
+               changeTab(0)
             }else{
                 alert(res)
             }
@@ -48,10 +53,12 @@ export default class List extends React.Component {
     }
     render() {
         const { data } = this.props
+        let {author,title} = this.state
         return <div style={{ width: '100%' }}>
             <Button color="primary" onClick={()=>{this.saveArticle()}}>submit/update</Button>
-            title:<Input></Input>
-            author:<Input></Input>
+            <hr></hr>
+            title:<Input value={title} onChange={(e)=>{this.setState({title:e.target.value})}}></Input>
+            author:<Input value={author} onChange={(e)=>{this.setState({author:e.target.value})}}></Input>
             content:
             <div style={{ height: "800px" }}>
                 <MdEditor

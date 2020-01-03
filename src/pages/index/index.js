@@ -3,17 +3,18 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    withRouter
 } from "react-router-dom";
 import { Container, Nav, NavItem, NavLink, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import HeadNav from './headNav.js'
 import List from './list.js'
 import New from './new.js'
-export default class Index extends React.Component {
+class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            assessToken:"29_oHv9_AJGI7HeNqHo6hCxwiqMXdnjBT-MSnRqrnR-kM7V3YCtHHH6viq96oo0tZhP-rlMgjja2koTwTVEdtQcyS7PUTno8j0Oy0xt3tcFQizOg0D0nYZ9U6jW5XSTfsQKOY9qQ42uHOcHypgnUTNcAFAXWQ"
+            assessToken:"29_sfUa9k5TbDeArtOFyYq122Gl32bIr2-eUkwKTGumDDFA-p-B7nXAsvqtuvgGVXdlppHvIqRM0lt4-mkOFpA3MJcJPESGQS3W4_wZp719fXe6RiQizIL8fKYUVPgu-zg-jkDoQSnrvqgrQxu5ZYEhAFATSY"
             ,
             navs:[
                 {key:0,name:'list',href:'/'},
@@ -42,7 +43,7 @@ export default class Index extends React.Component {
                 </Row>
                 <Row>
                     {this.state.currentNavKey == 0 && <List assessToken={assessToken} datas={this.state.articles}></List>}
-                    {this.state.currentNavKey == 1 && <New assessToken={assessToken}></New>}
+                    {this.state.currentNavKey == 1 && <New assessToken={assessToken} changeTab={(e)=>this.setState({currentNavKey:e})}></New>}
                     {this.state.currentNavKey == 2 && <div><a href={'https://mp.weixin.qq.com/debug/'}>open get </a></div>}
                     
                 </Row>
@@ -52,3 +53,4 @@ export default class Index extends React.Component {
     }
 }
 
+export default withRouter(Index)
