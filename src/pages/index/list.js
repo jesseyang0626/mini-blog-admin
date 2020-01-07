@@ -93,8 +93,10 @@ export default class List extends React.Component {
         return <div style={{ width: '100%' }}>
 
             {loading && <Spinner style={{ width: '3rem', height: '3rem' }} />}
-            {!loading && <div style={{ width: '100%' }}><Table>
-                <thead>
+            {!loading && <div style={{ width: '100%' }}>
+                <Button onClick={()=>{this.getArticleList()}}>refresh</Button>
+                <Table>
+                <thead> 
                     <tr>
                         <th>title</th>
                         <th>author</th>

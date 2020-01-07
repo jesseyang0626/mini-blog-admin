@@ -14,7 +14,7 @@ class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            assessToken:"29_sfUa9k5TbDeArtOFyYq122Gl32bIr2-eUkwKTGumDDFA-p-B7nXAsvqtuvgGVXdlppHvIqRM0lt4-mkOFpA3MJcJPESGQS3W4_wZp719fXe6RiQizIL8fKYUVPgu-zg-jkDoQSnrvqgrQxu5ZYEhAFATSY"
+            assessToken:"29_yBMENu4E-Rc2ULJ6oqv3EhN1oYvmA4BjjnOkRZT5OdY1UTG9unnJuZ0eNer2WtN0v15t4xe5F8IzHCkl6LD4H7q81yaukE6QFgssFNLfYSXp0YTy6mpvJItlXC4XWXdADAEDE"
             ,
             navs:[
                 {key:0,name:'list',href:'/'},
@@ -35,6 +35,7 @@ class Index extends React.Component {
         const {assessToken} =  this.state
         return <div>
             <Container className="themed-container">
+                <Button onClick={()=>{}}>refresh</Button>
                 assesstoken<Input value={this.state.assessToken}
                     onChange={(e)=>{this.setState({assessToken:e.target.value})}}
                 ></Input>
