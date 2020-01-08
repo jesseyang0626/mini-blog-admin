@@ -11,6 +11,7 @@ import HeadNav from './headNav.js'
 import List from './list.js'
 import New from './new.js'
 import Login from '../login/login'
+
 class Index extends React.Component {
     constructor(props) {
         super(props);

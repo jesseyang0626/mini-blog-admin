@@ -1,11 +1,6 @@
 import React from "react";
 import { Table, Container, Nav, NavItem, NavLink, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+import {envId} from '../../config'
 import MdEditor from 'react-markdown-editor-lite'
 import MarkdownIt from 'markdown-it'
 import {invokeCloudFunction} from '../../api'
@@ -29,7 +24,7 @@ export default class List extends React.Component {
         console.log(currentArticleId)
             let _ = this
         if(currentArticleId){
-            invokeCloudFunction(accessToken,`getArticleDetail`,{id:currentArticleId},"travel-pet-1").then(res=>{
+            invokeCloudFunction(accessToken,`getArticleDetail`,{id:currentArticleId},envId).then(res=>{
                 console.log(res)
                 this.setState({loading:false})
                 if(res.errcode == 0){
@@ -67,7 +62,7 @@ export default class List extends React.Component {
             status:operation
         }
         this.setState({loading:true})
-        invokeCloudFunction(accessToken,`addArticle`,params,"travel-pet-1").then(res=>{
+        invokeCloudFunction(accessToken,`addArticle`,params,envId).then(res=>{
             console.log(res)
             this.setState({loading:false})
             if(res.errcode == 0){

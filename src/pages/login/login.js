@@ -20,6 +20,7 @@ export default class Login extends React.Component {
         return <Modal isOpen={isShow}  >
             <ModalBody>
                 <div>
+                <p>fbc1eb50f578ba35b11d4ff61b39847b wx9bbf102997e7c9d9</p>
                 <a href={'https://mp.weixin.qq.com/debug/'} target="_blank">token失效。点击这里获取token，粘贴到下方</a>
                     <Input onChange={(e)=>{this.setState({token:e.target.value})}}></Input>
                 </div>

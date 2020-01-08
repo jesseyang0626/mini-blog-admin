@@ -6,6 +6,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import {envId} from '../../config'
 import JyAlert from '../../component/JyAlert'
 import JyModal from '../../component/JyModal'
 import JyLoading from '../../component/JyLoading'
@@ -31,7 +32,7 @@ export default class List extends React.Component {
         this.setState({ loading: true })
         const { accessToken,isLogin } = this.props
         const { pageSize, pageNum } = this.state
-        invokeCloudFunction(accessToken, `getArticleList`, { pageSize, pageNum }, "travel-pet-1").then(res => {
+        invokeCloudFunction(accessToken, `getArticleList`, { pageSize, pageNum }, envId).then(res => {
             console.log(res)
             this.setState({ loading: false })
             if (res.errcode == 0) {
@@ -90,7 +91,7 @@ export default class List extends React.Component {
         const { accessToken } = this.props
         const { deleteId } = this.state
         let _ = this
-        invokeCloudFunction(accessToken, `deleteArticle`, { id }, "travel-pet-1").then(res => {
+        invokeCloudFunction(accessToken, `deleteArticle`, { id }, envId).then(res => {
             console.log(res)
             this.setState({ loading: false })
             if (res.errcode == 0) {
@@ -138,11 +139,11 @@ export default class List extends React.Component {
                                 <td>
                                     <Button color="danger" onClick={() => { this.deleteArticle(a._id) }}>delete</Button>
                                     <Button color="info" onClick={()=>{goToEdit(a._id) }}>edit</Button>
-                                    <Button color="warning">back to draft</Button>
+                                    {/* <Button color="warning">back to draft</Button> */}
                                 </td>
                             </tr>
                         })}
-                        {this.state.articles.length == 0 && <span>no more</span>}
+                        {this.state.articles.length == 0 && <tr><th>no more</th></tr>}
 
                     </tbody>
                 </Table>
