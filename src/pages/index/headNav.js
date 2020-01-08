@@ -11,17 +11,14 @@ export default class HeadNav extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            currentKey:0
         }
     }
     onNavChange = (i)=>{
-        this.setState({currentKey:i})
         const {onChange} = this.props
         onChange(i)
     }
     render() {
-        const {links} = this.props
-        const {currentKey} = this.state
+        const {currentKey,links} = this.props
         return <Nav tabs>
             {links.map((l, i) => {
                 return <NavItem onClick={() => { this.onNavChange(i) }}>

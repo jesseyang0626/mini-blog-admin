@@ -10,46 +10,54 @@ import { Container, Nav, NavItem, NavLink, Row, Col, Button, Form, FormGroup, La
 import HeadNav from './headNav.js'
 import List from './list.js'
 import New from './new.js'
+import Login from '../login/login'
 class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            assessToken:"29_yBMENu4E-Rc2ULJ6oqv3EhN1oYvmA4BjjnOkRZT5OdY1UTG9unnJuZ0eNer2WtN0v15t4xe5F8IzHCkl6LD4H7q81yaukE6QFgssFNLfYSXp0YTy6mpvJItlXC4XWXdADAEDE"
+            accessToken:""
             ,
             navs:[
-                {key:0,name:'list',href:'/'},
-                {key:1,name:'edit',href:'/home'},
-                {key:2,name:'3',href:'/home'},
-                {key:3,name:'4',href:'/home'},
+                {key:0,name:'列表',href:'/'},
+                {key:1,name:'新增/编辑',href:'/home'},
+                // {key:2,name:'accessPage',href:'/home'},
             ],
-            articles:[
-                {id:0,title:'222',author:'333'},
-                {id:1,title:'24',author:'2323'},
-                {id:2,title:'22123212',author:'434'},
-            ],
-            currentNavKey:0
+            currentNavKey:0,
+            isLogin:true
         };
     }
 
+    componentWillMount(){
+        this.setState({accessToken:localStorage.getItem('article_token')})
+    }
+
+    onAccessTokenChange=(e)=>{
+        this.setState({accessToken:e.target.value})
+    }
+
     render() {
-        const {assessToken} =  this.state
+        const {accessToken,currentNavKey,currentArticleId,isLogin} =  this.state
         return <div>
             <Container className="themed-container">
-                <Button onClick={()=>{}}>refresh</Button>
-                assesstoken<Input value={this.state.assessToken}
-                    onChange={(e)=>{this.setState({assessToken:e.target.value})}}
-                ></Input>
+                {/* <Button onClick={()=>{ localStorage.setItem("article_token",accessToken)}}>save token</Button>
+                <Input value={this.state.accessToken}
+                    onChange={(e)=>{this.setState({accessToken:e.target.value})}}
+                ></Input> */}
                 <Row >
-                    <HeadNav links = {this.state.navs} onChange={(i)=>{this.setState({currentNavKey:i})}}></HeadNav>
+                    <HeadNav currentKey={currentNavKey} links = {this.state.navs} onChange={(i)=>{this.setState({currentNavKey:i,currentArticleId:''})}}></HeadNav>
                 </Row>
                 <Row>
-                    {this.state.currentNavKey == 0 && <List assessToken={assessToken} datas={this.state.articles}></List>}
-                    {this.state.currentNavKey == 1 && <New assessToken={assessToken} changeTab={(e)=>this.setState({currentNavKey:e})}></New>}
-                    {this.state.currentNavKey == 2 && <div><a href={'https://mp.weixin.qq.com/debug/'}>open get </a></div>}
+                    {this.state.currentNavKey == 0 && <List isLogin={(e)=>{this.setState({isLogin:e})}} accessToken={accessToken} goToEdit={(articleId)=>{this.setState({currentNavKey:1,currentArticleId:articleId})}} ></List>}
+                    {this.state.currentNavKey == 1 && <New isLogin={(e)=>{this.setState({isLogin:e})}} currentArticleId={currentArticleId} isLogin={(e)=>{this.setState({isLogin:e})}} accessToken={accessToken} changeTab={(e)=>this.setState({currentNavKey:e})}></New>}
+                    {/* {this.state.currentNavKey == 2 && <div><a href={'https://mp.weixin.qq.com/debug/'} target="_blank">open get accesstoken page</a></div>} */}
                     
                 </Row>
             </Container>
-
+            <Login isShow={!isLogin} onSave={(token)=>{
+                this.setState({accessToken:token,isLogin:true})
+                localStorage.setItem("article_token",token)
+                // window.location.reload() 
+            }}></Login>
         </div>
     }
 }

@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Index from './pages/index/index'
-
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
 //
