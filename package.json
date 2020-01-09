@@ -1,6 +1,7 @@
 {
   "name": "mini-blog-admin",
   "version": "0.1.0",
+  "homepage":"https://jesseyang0626.github.io/mini-blog-admin",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -8,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.0",
     "bootstrap": "^4.4.1",
+    "gh-pages": "^2.2.0",
     "http-proxy-middleware": "^0.20.0",
     "markdown-it": "^10.0.0",
     "react": "^16.12.0",
@@ -21,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app",
