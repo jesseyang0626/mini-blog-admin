@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/mini-blog-admin/static/css/main.cd0894b5.chunk.css",
+    "main.js": "/mini-blog-admin/static/js/main.a1c775e9.chunk.js",
+    "main.js.map": "/mini-blog-admin/static/js/main.a1c775e9.chunk.js.map",
+    "runtime-main.js": "/mini-blog-admin/static/js/runtime-main.1be9885c.js",
+    "runtime-main.js.map": "/mini-blog-admin/static/js/runtime-main.1be9885c.js.map",
+    "static/css/2.17e5ed98.chunk.css": "/mini-blog-admin/static/css/2.17e5ed98.chunk.css",
+    "static/js/2.8b8a2a8c.chunk.js": "/mini-blog-admin/static/js/2.8b8a2a8c.chunk.js",
+    "static/js/2.8b8a2a8c.chunk.js.map": "/mini-blog-admin/static/js/2.8b8a2a8c.chunk.js.map",
+    "index.html": "/mini-blog-admin/index.html",
+    "precache-manifest.cd7b7dd0368c6b022b392ddea7cdda3b.js": "/mini-blog-admin/precache-manifest.cd7b7dd0368c6b022b392ddea7cdda3b.js",
+    "service-worker.js": "/mini-blog-admin/service-worker.js",
+    "static/css/2.17e5ed98.chunk.css.map": "/mini-blog-admin/static/css/2.17e5ed98.chunk.css.map",
+    "static/css/main.cd0894b5.chunk.css.map": "/mini-blog-admin/static/css/main.cd0894b5.chunk.css.map",
+    "static/js/2.8b8a2a8c.chunk.js.LICENSE": "/mini-blog-admin/static/js/2.8b8a2a8c.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1be9885c.js",
+    "static/css/2.17e5ed98.chunk.css",
+    "static/js/2.8b8a2a8c.chunk.js",
+    "static/css/main.cd0894b5.chunk.css",
+    "static/js/main.a1c775e9.chunk.js"
+  ]
+}
